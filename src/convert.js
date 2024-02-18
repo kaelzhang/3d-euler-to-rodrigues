@@ -46,8 +46,8 @@ const MATRIX_TO_XYZ = matrix => {
   let ry = Math.asin(matrix[2][0])
   const cos_ry = Math.cos(ry)
 
-  let rx = Math.atan(- matrix[2][1] / matrix[2][2])
-  let rz = Math.atan(- matrix[1][0] / matrix[0][0])
+  let rx = Math.atan2(- matrix[2][1] / cos_ry, matrix[2][2] / cos_ry)
+  let rz = Math.atan(- matrix[1][0] / cos_ry, matrix[0][0] / cos_ry)
 
   rx *= (180 / Math.PI)
   ry *= (180 / Math.PI)
@@ -59,4 +59,11 @@ const MATRIX_TO_XYZ = matrix => {
 const ZYX_TO_XYZ = exports.ZYX_TO_XYZ = (rz, ry, rx) => {
   const matrix = ZYX_TO_MATRIX(rz, ry, rx)
   return MATRIX_TO_XYZ(matrix)
+}
+
+module.exports = {
+  ZYX_TO_MATRIX,
+  XYZ_TO_MATRIX,
+  MATRIX_TO_XYZ,
+  ZYX_TO_XYZ
 }
