@@ -47,7 +47,7 @@ const MATRIX_TO_XYZ = matrix => {
   const cos_ry = Math.cos(ry)
 
   let rx = Math.atan2(- matrix[2][1] / cos_ry, matrix[2][2] / cos_ry)
-  let rz = Math.atan(- matrix[1][0] / cos_ry, matrix[0][0] / cos_ry)
+  let rz = Math.atan2(- matrix[1][0] / cos_ry, matrix[0][0] / cos_ry)
 
   rx *= (180 / Math.PI)
   ry *= (180 / Math.PI)
