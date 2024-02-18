@@ -1,4 +1,3 @@
-
 const {
   SIN,
   COS
@@ -9,7 +8,7 @@ const ZYX_TO_MATRIX = (rz, ry, rx) => [
   [
     COS(ry) * COS(rz),
     COS(ry) * SIN(rz),
-    -SIN(ry)
+    - SIN(ry)
   ],
   [
     SIN(rx) * SIN(ry) * COS(rz) - COS(rx) * SIN(rz),
@@ -43,16 +42,16 @@ const XYZ_TO_MATRIX = (rx, ry, rz) => [
 ]
 
 // Get the z-y-x rotations in degrees from the given rotation matrix
-const MATRIX_TO_XYZ = (matrix) => {s s s s s s s s s s s
+const MATRIX_TO_XYZ = matrix => {
   let ry = Math.asin(matrix[2][0])
   const cos_ry = Math.cos(ry)
 
   let rx = Math.atan(- matrix[2][1] / matrix[2][2])
   let rz = Math.atan(- matrix[1][0] / matrix[0][0])
 
-  rx = rx * (180 / Math.PI)
-  ry = ry * (180 / Math.PI)
-  rz = rz * (180 / Math.PI)
+  rx *= (180 / Math.PI)
+  ry *= (180 / Math.PI)
+  rz *= (180 / Math.PI)
 
   return [rx, ry, rz]
 }
