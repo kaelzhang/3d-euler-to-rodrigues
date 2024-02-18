@@ -28,7 +28,7 @@ const COS = exports.COS = r => Math.cos(Math.PI * r / 180)
 
 const SIN = exports.SIN = r => Math.sin(Math.PI * r / 180)
 
-const MINUS_ONE = [- 1, - 1, - 1]
+// const MINUS_ONE = [- 1, - 1, - 1]
 
 const REVERSE = exports.REVERSE = (vector, reverse) => reverse
   ? [].concat(vector).reverse()
@@ -65,10 +65,12 @@ const UNIT_VECTORS = exports.UNIT_VECTORS = [
   [0, 0, 1]
 ]
 
-// Apply a rotation `r` around x, y and z to the givin vector `v` to get the //
+// Apply a rotation `r` around x, y and z to the givin vector `v` to get the
 //   new vector
-// - extrinsic `boolean` whether to rotate around the global coordinate system //     or the local coordinate system sodility to the rigid body
-// - reverse `boolean` whether to reverse the rotation order, false to apply a //     x-y-z rotation, true to apply a z-y-x rotation
+// - extrinsic `boolean` whether to rotate around the global coordinate system
+//     or the local coordinate system sodility to the rigid body
+// - reverse `boolean` whether to reverse the rotation order, false to apply a
+//     x-y-z rotation, true to apply a z-y-x rotation
 const ROTATE = exports.ROTATE = (v, r, extrinsic = true, reverse = false) => {
   const [rx, ry, rz] = REVERSE(r, reverse)
   const [kx, ky_, kz_] = REVERSE(UNIT_VECTORS, reverse)
@@ -101,4 +103,19 @@ const ROTATE = exports.ROTATE = (v, r, extrinsic = true, reverse = false) => {
     kz,
     rz
   )
+}
+
+module.exports = {
+  CROSS,
+  SUM,
+  DOT,
+  MUL,
+  ADD,
+  COS,
+  SIN,
+  // MINUS_ONE,
+  REVERSE,
+  ROD_ROTATE,
+  // UNIT_VECTORS,
+  ROTATE
 }
