@@ -39,28 +39,28 @@ const ZYX_TO_MATRIX = (rz, ry, rx) => [
 const XYZ_TO_MATRIX = (rx, ry, rz) => [
   [
     COS(ry) * COS(rz),
-    - COS(ry) * SIN(rz),
-    SIN(ry),
+    SIN(rx) * SIN(ry) * COS(rz) - COS(rx) * SIN(rz),
+    COS(rx) * SIN(ry) * COS(rz) + SIN(rx) * SIN(rz)
   ],
   [
-    SIN(rx) * SIN(ry) * COS(rz) + COS(rx) * SIN(rz),
-    - SIN(rx) * SIN(ry) * SIN(rz) + COS(rx) * COS(rz),
-    - SIN(rx) * COS(ry),
+    COS(ry) * SIN(rz),
+    SIN(rx) * SIN(ry) * SIN(rz) + COS(rx) * COS(rz),
+    COS(rx) * SIN(ry) * SIN(rz) - SIN(rx) * COS(rz)
   ],
   [
-    - COS(rx) * SIN(ry) * COS(rz) + SIN(rx) * SIN(rz),
-    COS(rx) * SIN(ry) * SIN(rz) + SIN(rx) * COS(rz),
+    - SIN(ry),
+    SIN(rx) * COS(ry),
     COS(rx) * COS(ry)
   ]
 ]
 
 // Get the z-y-x rotations in degrees from the given rotation matrix
 const MATRIX_TO_XYZ = matrix => {
-  let ry = Math.asin(matrix[0][2])
+  let ry = Math.asin(- matrix[2][0])
   const cos_ry = Math.cos(ry)
 
-  let rx = Math.atan2(- matrix[1][2] / cos_ry, matrix[2][2] / cos_ry)
-  let rz = Math.atan2(- matrix[0][1] / cos_ry, matrix[0][0] / cos_ry)
+  let rx = Math.atan2(matrix[2][1] / cos_ry, matrix[2][2] / cos_ry)
+  let rz = Math.atan2(- matrix[1][0] / cos_ry, matrix[0][0] / cos_ry)
 
   rx *= (180 / Math.PI)
   ry *= (180 / Math.PI)
