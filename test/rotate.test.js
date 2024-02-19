@@ -1,5 +1,5 @@
 const test = require('ava')
-// const log = require('util').debuglog('3d-euler-to-rodrigues')
+// const log = require('util').debuglog('3d-rotation')
 const {
   ROTATE,
   MUL

@@ -1,11 +1,11 @@
 {
-  "name": "3d-euler-to-rodrigues",
+  "name": "3d-rotation",
   "version": "1.0.0",
   "description": "A testing project to calculate Euler rotations",
   "main": "src/index.js",
   "scripts": {
-    "test": "NODE_DEBUG=3d-euler-to-rodrigues nyc ava --timeout=10s --verbose",
-    "test:dev": "NODE_DEBUG=3d-euler-to-rodrigues nyc ava --timeout=10s --verbose && npm run report:dev",
+    "test": "NODE_DEBUG=3d-rotation nyc ava --timeout=10s --verbose",
+    "test:dev": "NODE_DEBUG=3d-rotation nyc ava --timeout=10s --verbose && npm run report:dev",
     "lint": "eslint .",
     "fix": "eslint . --fix",
     "posttest": "npm run report",
@@ -18,10 +18,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/kaelzhang/3d-euler-to-rodrigues.git"
+    "url": "git://github.com/kaelzhang/3d-rotation.git"
   },
   "keywords": [
-    "3d-euler-to-rodrigues"
+    "3d rotation",
+    "Euler rotation",
+    "rotation matrix",
+    "extrinsic rotation",
+    "intrinsic rotation"
   ],
   "engines": {
     "node": ">= 6"
@@ -34,7 +38,7 @@
   "author": "kaelzhang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kaelzhang/3d-euler-to-rodrigues/issues"
+    "url": "https://github.com/kaelzhang/3d-rotation/issues"
   },
   "devDependencies": {
     "@ostai/eslint-config": "^3.5.0",
