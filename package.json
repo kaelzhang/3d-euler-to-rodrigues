@@ -1,6 +1,6 @@
 {
   "name": "3d-rotation",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A testing project to calculate Euler rotations",
   "main": "src/index.js",
   "scripts": {
