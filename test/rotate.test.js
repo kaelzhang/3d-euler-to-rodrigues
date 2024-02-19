@@ -1,8 +1,13 @@
 const test = require('ava')
 // const log = require('util').debuglog('3d-euler-to-rodrigues')
 const {
-  ROTATE
+  ROTATE,
+  MUL
 } = require('../src/rotate')
+
+const {
+  XYZ_TO_MATRIX
+} = require('../src/convert')
 
 const cases = [
   [
@@ -28,7 +33,14 @@ const cases = [
 cases.forEach(([v, xyz, vr]) => {
   test(`rotate: ${v} -> ${xyz} -> ${vr}`, t => {
     const result = ROTATE(v, xyz).map(r => Math.round(r * 100) / 100)
-    console.log(result)
+
+    t.deepEqual(result, vr)
+  })
+
+  test(`rotate matrix: ${v} -> ${xyz} -> ${vr}`, t => {
+    const matrix = XYZ_TO_MATRIX(...xyz)
+    const result = MUL(matrix, v).map(r => Math.round(r * 100) / 100)
+
     t.deepEqual(result, vr)
   })
 })

@@ -10,10 +10,36 @@ const SUM = arr => arr.reduce((a, b) => a + b, 0)
 // Dot product: k . v
 const DOT = (k, v) => k[0] * v[0] + k[1] * v[1] + k[2] * v[2]
 
-// Multiply vector by a scalar or multiply two vectors
-const MUL = (arr, m) => Array.isArray(m)
-  ? arr.map((c, i) => c * m[i])
-  : arr.map(c => c * m)
+const ERROR_SHAPE_NOT_MATCH = 'The number of columns of the first matrix must be equal to the number of rows of the second matrix'
+
+const THREE = 3
+
+// Multiply a metrix by a scalar or multiply two matrices
+// This method is only used for 3d vectors
+// and should not be used for general matrix multiplication
+const MUL = (arr, m) => {
+  if (typeof m === 'number') {
+    return arr.map(c => c * m)
+  }
+
+  if (!Array.isArray(m)) {
+    throw new TypeError('The second argument must be a number or a matrix')
+  }
+
+  if (
+    m.length !== THREE
+    || arr.length !== THREE
+    || arr[0].length !== THREE
+  ) {
+    throw new Error(ERROR_SHAPE_NOT_MATCH)
+  }
+
+  return [
+    arr[0][0] * m[0] + arr[0][1] * m[1] + arr[0][2] * m[2],
+    arr[1][0] * m[0] + arr[1][1] * m[1] + arr[1][2] * m[2],
+    arr[2][0] * m[0] + arr[2][1] * m[1] + arr[2][2] * m[2]
+  ]
+}
 
 const ADD = (first, ...args) => args.reduce(
   ([x, y, z], current) => [

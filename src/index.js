@@ -9,10 +9,14 @@ const {
   ZYX_TO_XYZ
 } = require('./convert')
 
-const COOR_ALPHA = [1, 1, - 1]
+const COOR_ALPHA = [
+  [1, 0, 0],
+  [0, 1, 0],
+  [0, 0, - 1]
+]
 // const ROTATE_ALPHA = [1, - 1, 1]
 
-const SWITCH = c => MUL(c, COOR_ALPHA)
+const SWITCH = c => MUL(COOR_ALPHA, c)
 
 const oo = [0, 0, 0]
 
