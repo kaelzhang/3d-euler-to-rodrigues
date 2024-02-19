@@ -11,11 +11,11 @@ const SUM = arr => arr.reduce((a, b) => a + b, 0)
 const DOT = (k, v) => k[0] * v[0] + k[1] * v[1] + k[2] * v[2]
 
 // Multiply vector by a scalar or multiply two vectors
-const MUL = exports.MUL = (arr, m) => Array.isArray(m)
+const MUL = (arr, m) => Array.isArray(m)
   ? arr.map((c, i) => c * m[i])
   : arr.map(c => c * m)
 
-const ADD = exports.ADD = (first, ...args) => args.reduce(
+const ADD = (first, ...args) => args.reduce(
   ([x, y, z], current) => [
     x + current[0],
     y + current[1],
@@ -24,20 +24,20 @@ const ADD = exports.ADD = (first, ...args) => args.reduce(
   first
 )
 
-const COS = exports.COS = r => Math.cos(Math.PI * r / 180)
+const COS = r => Math.cos(Math.PI * r / 180)
 
-const SIN = exports.SIN = r => Math.sin(Math.PI * r / 180)
+const SIN = r => Math.sin(Math.PI * r / 180)
 
 // const MINUS_ONE = [- 1, - 1, - 1]
 
-const REVERSE = exports.REVERSE = (vector, reverse) => reverse
+const REVERSE = (vector, reverse) => reverse
   ? [].concat(vector).reverse()
   : vector
 
 // Rotate a vector `v` around an axis `k` by `r` degrees
 // according to Rodrigues' rotation formula
 // ref: https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
-const ROD_ROTATE = exports.ROD_ROTATE = (v, k, r) => {
+const ROD_ROTATE = (v, k, r) => {
   const a1 = MUL(
     v,
     COS(r)
@@ -59,7 +59,7 @@ const ROD_ROTATE = exports.ROD_ROTATE = (v, k, r) => {
   return ADD(a1, a2, a3)
 }
 
-const UNIT_VECTORS = exports.UNIT_VECTORS = [
+const UNIT_VECTORS = [
   [1, 0, 0],
   [0, 1, 0],
   [0, 0, 1]
@@ -71,7 +71,7 @@ const UNIT_VECTORS = exports.UNIT_VECTORS = [
 //     or the local coordinate system sodility to the rigid body
 // - reverse `boolean` whether to reverse the rotation order, false to apply a
 //     x-y-z rotation, true to apply a z-y-x rotation
-const ROTATE = exports.ROTATE = (v, r, extrinsic = true, reverse = false) => {
+const ROTATE = (v, r, extrinsic = true, reverse = false) => {
   const [rx, ry, rz] = REVERSE(r, reverse)
   const [kx, ky_, kz_] = REVERSE(UNIT_VECTORS, reverse)
 
@@ -116,6 +116,6 @@ module.exports = {
   // MINUS_ONE,
   REVERSE,
   ROD_ROTATE,
-  // UNIT_VECTORS,
+  UNIT_VECTORS,
   ROTATE
 }

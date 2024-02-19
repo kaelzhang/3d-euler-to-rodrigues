@@ -10,7 +10,7 @@ const {
 } = require('./convert')
 
 const COOR_ALPHA = [1, 1, - 1]
-const ROTATE_ALPHA = [1, - 1, 1]
+// const ROTATE_ALPHA = [1, - 1, 1]
 
 const SWITCH = c => MUL(c, COOR_ALPHA)
 
@@ -20,27 +20,31 @@ const nodes = [
   [
     // origin
     [0, 3100, 0],
-    // rotation
-    [- 45, 0, 30]
+    // XYZ rotation to roll the position back
+    // [- 45, 0, 30]
+    [40.89, 20.70, - 22.21]
+
   ],
-  [
-    [- 559.96, 4082.76, 1129.68],
-    [- 72.81, 28.88, 38.5]
-  ]
+  // [
+  //   [- 559.96, 4082.76, 1129.68],
+  //   // [- 72.81, 28.88, 38.5]
+  // ]
 ]
 
 nodes.forEach(node => {
   const o = SWITCH(node[0])
-  const r = MUL(node[1], - 1)
+  const xyz = node[1]
 
-  const xyz = ZYX_TO_XYZ(...REVERSE(r, true))
+  const v = ADD(oo, MUL(o, - 1))
 
-  const vo = ROTATE(
-    ADD(oo, MUL(o, - 1)),
-    r,
-    true,
-    true
+  console.log('v', v)
+
+  const vr = ROTATE(
+    v,
+    xyz
   )
+
+  console.log('vr', vr)
 
   // console.log(ADD(oo, MUL(o, - 1)), xyz)
 
@@ -50,8 +54,8 @@ nodes.forEach(node => {
   // )
 
   console.log(
-    SWITCH(vo),
-    MUL(SWITCH(vo), 2),
-    MUL(xyz, ROTATE_ALPHA)
+    SWITCH(vr),
+    // MUL(SWITCH(vo), 2),
+    // MUL(xyz, ROTATE_ALPHA)
   )
 })
