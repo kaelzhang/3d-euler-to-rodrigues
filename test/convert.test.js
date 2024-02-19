@@ -18,9 +18,9 @@ const cases = [
   ]
 ]
 
-// cases.forEach(([zyx, xyz]) => {
-//   test(`zyx -> xyz: ${zyx} -> ${xyz}`, t => {
-//     const result = ZYX_TO_XYZ(...zyx).map(r => Math.round(r * 100) / 100)
-//     t.deepEqual(result, xyz)
-//   })
-// })
+cases.forEach(([zyx, xyz]) => {
+  test(`zyx -> xyz: ${zyx} -> ${xyz}`, t => {
+    const result = ZYX_TO_XYZ(...zyx).map(r => Math.round(r * 100) / 100)
+    t.deepEqual(result, xyz)
+  })
+})

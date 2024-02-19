@@ -29,11 +29,13 @@ const nodes = [
     [40.89, 20.70, - 22.21]
 
   ],
-  // [
-  //   [- 559.96, 4082.76, 1129.68],
-  //   // [- 72.81, 28.88, 38.5]
-  // ]
+  [
+    [- 749.68, 15797.78, 781.30],
+    // [- 72.81, 28.88, 38.5]
+  ]
 ]
+
+const OFFSET_SCALE = 1
 
 nodes.forEach(node => {
   const o = SWITCH(node[0])
@@ -41,14 +43,10 @@ nodes.forEach(node => {
 
   const v = ADD(oo, MUL(o, - 1))
 
-  console.log('v', v)
-
-  const vr = ROTATE(
-    v,
-    xyz
+  const vr = MUL(
+    ROTATE(v, xyz),
+    OFFSET_SCALE
   )
-
-  console.log('vr', vr)
 
   // console.log(ADD(oo, MUL(o, - 1)), xyz)
 
