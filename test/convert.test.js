@@ -2,7 +2,7 @@ const test = require('ava')
 // const log = require('util').debuglog('3d-rotation')
 const {
   ZYX_TO_XYZ
-} = require('../src/convert')
+} = require('../src/rotate-matrix')
 
 const cases = [
   [

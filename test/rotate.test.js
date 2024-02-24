@@ -7,7 +7,7 @@ const {
 
 const {
   XYZ_TO_MATRIX
-} = require('../src/convert')
+} = require('../src/rotate-matrix')
 
 const cases = [
   [
