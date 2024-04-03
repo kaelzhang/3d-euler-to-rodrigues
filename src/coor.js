@@ -4,7 +4,6 @@ const {
   DOT
 } = require('./rotate')
 
-
 const get_unit_vectors = (...r) => [
   ROTATE(UNIT_VECTORS[0], r),
   ROTATE(UNIT_VECTORS[1], r),
@@ -22,7 +21,6 @@ const GLOBAL_VECTOR_TO_LOCAL = (v, rotate) => {
     DOT(v, unit_vectors[2])
   ]
 }
-
 
 module.exports = {
   GLOBAL_VECTOR_TO_LOCAL
